@@ -2,6 +2,7 @@ import react, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { actionCreators } from './store';
+import { Link } from 'react-router-dom';
 import {
     HeaderWrapper,
     Logo,
@@ -48,7 +49,10 @@ class Header extends Component {
         const { focused , handleInputFocus , handleInputBlur} = this.props;
         return (
             <HeaderWrapper>
-                <Logo/>
+                <Link to='/'>
+                    <Logo/>
+                </Link>
+                
                 <Nav>
                     <NavItem className='left active'>Homepage</NavItem>
                     <NavItem className='left'>download</NavItem>

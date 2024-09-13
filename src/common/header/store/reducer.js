@@ -1,4 +1,4 @@
-import * as constants from './constants';
+import * as constants from '../constants';
 import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
@@ -14,7 +14,7 @@ export default (state = defaultState, action) => {
         case(constants.SEARCH_BLUR):
             return state.set('focused', false);
         case(constants.CHANGE_LIST):
-            return state.set('list', action.data)
+            return state.set('list', action.data);
         default:
             return state;
     }
