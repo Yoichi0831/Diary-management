@@ -9,9 +9,10 @@ const changeHomeData = (result) => ({
     recommendList: result.recommendList
 })
 
-const addHomeList = (list) => ({
+const addHomeList = (list, nextPage) => ({
     type: constants.ADD_HOME_LIST,
-    list: fromJS(list)
+    list: fromJS(list),
+    nextPage
 })
 
 export const getHomeDetail = () => {
@@ -25,14 +26,11 @@ export const getHomeDetail = () => {
 }
 
 // redux thunk allow us to return a function
-export const getMoreList = () => {
+export const getMoreList = (page) => {
     return (dispatch) => {
-        axios.get('api/homeList.json').then((res)=> {
-
+        axios.get('api/homeList.json?page=' + page).then((res)=> {
             const result = res.data.data
-            console.log('result: ', result)
-            console.log('addhomelist: ',addHomeList(result))
-            dispatch(addHomeList(result))
+            dispatch(addHomeList(result, page + 1))
         })
     }
 }

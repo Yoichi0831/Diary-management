@@ -38,7 +38,7 @@ const defaultState = fromJS({
         description: "my special orientation day is so unforgettable ",
         imgUrl: "https://www.gravatar.com/avatar/8edccfffaf92d3336a3eedf50fabc952?s=64&d=identicon&r=PG"
     }],
-    articlePage: 0
+    articlePage: 1
 });
 
 
@@ -51,8 +51,13 @@ export default (state = defaultState, action) => {
                 recommendList: fromJS(action.recommendList),
             })
         case constants.ADD_HOME_LIST:
-            console.log("state articleList is: ", state.list)
-            return state.set('articleList', state.get('articleList').concat(action.list))
+            console.log('here')
+            return state.merge({
+                'articleList': state.get('articleList').concat(action.list),
+                'articlePage': action.nextPage
+            })
+            
+            
         default:
             return state;
     }

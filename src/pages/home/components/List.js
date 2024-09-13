@@ -6,14 +6,16 @@ import { actionCreators } from '../store'
 
 class List extends Component {
     render() {
-        const {list, getMoreList} = this.props;
+        const {list, getMoreList, page} = this.props;
         return (
             <div>
                 {
                     list.map((item, index) => {
+                        console.log('here11')
+                        console.log('item: ', item)
                         return (
                             <Link key={index} to={'detail/' + item.get('id')}>
-                                <ListItem key={item.get('id')}>
+                                <ListItem key={index}>
                                     <img className="pic" src={item.get('imgUrl')} />
                                     <ListInfo>
                                         <h3 className='title'>{item.get('title')}</h3>
@@ -25,18 +27,19 @@ class List extends Component {
                         )
                     })
                 }
-                <LoadMore onClick={getMoreList}>More</LoadMore>
+                <LoadMore onClick={() => getMoreList(page)}>More</LoadMore>
             </div>)
     }
 }
 
 const mapStateToProps = (state) => ({
-    list: state.getIn(['home', 'articleList'])
+    list: state.getIn(['home', 'articleList']),
+    page: state.getIn(['home', 'articlePage'])
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    getMoreList() {
-        dispatch(actionCreators.getMoreList())
+    getMoreList(page) {
+        dispatch(actionCreators.getMoreList(page))
     }
 })
 
