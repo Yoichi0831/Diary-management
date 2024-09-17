@@ -18,9 +18,7 @@ class Home extends Component {
             <HomeWrapper>
                 <HomeLeft>
                     <img className='banner_img' src={bannerImg} alt="yeah image" />
-
                     <Topic />
-
                     <List />
                 </HomeLeft>
                 <HomeRight>

@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import logo from '../../statics/logo.png'
+
+
 export const HeaderWrapper = styled.div`
+    z-index: 1;
     position: relative;
     height: 58px;
     border-bottom: 1px solid #f0f0f0
@@ -44,10 +47,6 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
     position: relative;
     float: left;
-
-
-
-
     .iconfont {
         position: absolute;
         right: 5px;
