@@ -4,81 +4,56 @@ import { useEffect, useState } from 'react';
 import { RiCloseLine } from '@remixicon/react';
 import { AreaChart, Card, List, ListItem } from '@tremor/react';
 
-
-export const Card1=() => {
-  return <Card>yooooooooo</Card>;
-}
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
 export const data = [
   {
-    date: 'Jan 23',
-    Organic: 232,
+    date: 'Sep 22',
+    CPI: 7.3,
     Sponsored: 0,
   },
   {
-    date: 'Feb 23',
-    Organic: 241,
+    date: 'Dec 22',
+    CPI: 7.8,
     Sponsored: 0,
   },
   {
     date: 'Mar 23',
-    Organic: 291,
-    Sponsored: 0,
-  },
-  {
-    date: 'Apr 23',
-    Organic: 101,
-    Sponsored: 0,
-  },
-  {
-    date: 'May 23',
-    Organic: 318,
+    CPI: 7.0,
     Sponsored: 0,
   },
   {
     date: 'Jun 23',
-    Organic: 205,
-    Sponsored: 0,
-  },
-  {
-    date: 'Jul 23',
-    Organic: 372,
-    Sponsored: 0,
-  },
-  {
-    date: 'Aug 23',
-    Organic: 341,
+    CPI: 6.0,
     Sponsored: 0,
   },
   {
     date: 'Sep 23',
-    Organic: 387,
-    Sponsored: 120,
-  },
-  {
-    date: 'Oct 23',
-    Organic: 220,
-    Sponsored: 0,
-  },
-  {
-    date: 'Nov 23',
-    Organic: 372,
+    CPI: 5.4,
     Sponsored: 0,
   },
   {
     date: 'Dec 23',
-    Organic: 321,
+    CPI: 4.1,
+    Sponsored: 0,
+  },
+  {
+    date: 'Mar 24',
+    CPI: 3.6,
+    Sponsored: 0,
+  },
+  {
+    date: 'Jun 24',
+    CPI: 3.8,
     Sponsored: 0,
   },
 ];
 
 const summary = [
   {
-    name: 'Organic',
+    name: 'CPI',
     value: 3273,
   },
   {
@@ -91,7 +66,7 @@ const valueFormatter = (number) =>
   `${Intl.NumberFormat('us').format(number).toString()}`;
 
 const statusColor = {
-  Organic: 'bg-blue-500',
+  CPI: 'bg-blue-500',
   Sponsored: 'bg-violet-500',
 };
 
@@ -118,15 +93,15 @@ export const Example = () => {
         <AreaChart
           data={data}
           index="date"
-          categories={['Organic', 'Sponsored']}
+          categories={['CPI', 'Sponsored']}
           colors={['blue', 'violet']}
           showLegend={false}
           showYAxis={true}
           showGridLines={true}
           showGradient={false}
-          startEndOnly={true}
+          startEndOnly={false}
           className="mt-6 h-48"
-        />yooooo{console.log(summary)}
+        />
         <List className="mt-2">
           {summary.map((item) => (
             <ListItem key={item.name}>
@@ -142,34 +117,6 @@ export const Example = () => {
             </ListItem>
           ))}
         </List>
-        {isOpen ? (
-          <div className="mt-3 rounded-tremor-small bg-tremor-background-muted py-3 pl-4 pr-2 ring-1 ring-inset ring-tremor-ring dark:bg-dark-tremor-background-subtle dark:ring-dark-tremor-ring">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-2">
-                <p className="text-tremor-default font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">
-                  More power?{' '}
-                  <a
-                    href="#"
-                    className="font-normal text-tremor-brand hover:underline hover:underline-offset-4 dark:text-dark-tremor-brand"
-                  >
-                    Upgrade
-                  </a>{' '}
-                  <span className="font-normal text-tremor-content dark:text-dark-tremor-content">
-                    to get more insights.
-                  </span>
-                </p>
-              </div>
-              <button
-                type="button"
-                className="rounded-tremor-small p-1 text-tremor-content-subtle hover:text-tremor-content dark:text-dark-tremor-content-subtle hover:dark:text-tremor-content"
-                onClick={() => setIsOpen(false)}
-                aria-label="Close"
-              >
-                <RiCloseLine className="size-5 shrink-0" aria-hidden={true} />
-              </button>
-            </div>
-          </div>
-        ) : null}
       </Card>
     </>
   );

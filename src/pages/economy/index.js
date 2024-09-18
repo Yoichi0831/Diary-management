@@ -4,12 +4,29 @@ import { connect } from 'react-redux';
 import { RiCloseLine } from '@remixicon/react';
 import { AreaChart, Card, List, ListItem } from '@tremor/react';
 import { data, Example, Card1 } from './components/areaChart'
+import { Callout } from './components/callout'
+import { KPIcards, KPIcard } from './components/KPIcard'
+import { MainWrapper, KeyIndicatorsWrapper, KeyIndicatorWrapper } from './style';
+
 
 
 const Economy = (props) => {
   const [CPI, setCPI] = useState(null); // 初始值为 null
-
+  const [CashRate, setCashRate] = useState(4.35);
+  const [WagePriceIndex, setWagePriceIndex] = useState(4.1);
   // 使用 dataflow identifier 获取澳大利亚的通货膨胀率 (CPI) 数据
+
+
+  const data1 = 
+  {
+    name: 'Daily active users',
+    stat: '3,450',
+    change: '+12.1%',
+    changeType: 'positive',
+  }
+
+
+
   const getInflationRate = async () => {
     try {
       // 发送 API 请求
@@ -21,7 +38,7 @@ const Economy = (props) => {
           },
         }
       );
-
+      
       const parser = new DOMParser();
       const xmlDoc = parser.parseFromString(response.data, 'text/xml');
 
@@ -61,8 +78,24 @@ const Economy = (props) => {
   }, []); // 空数组确保 useEffect 只在组件挂载时运行一次
 
   return (
-    <div>
+    <MainWrapper>
       <h2>CPI Data</h2>
+      <KeyIndicatorsWrapper>
+        
+        <KeyIndicatorWrapper>
+          <Example></Example>
+        </KeyIndicatorWrapper>
+
+        <KeyIndicatorWrapper>
+          <KPIcard data={data1}/>
+        </KeyIndicatorWrapper>
+
+        <KeyIndicatorWrapper>
+        </KeyIndicatorWrapper>
+
+      </KeyIndicatorsWrapper>
+
+      
       <div>
         {/* 只有当 CPI 数据存在时才进行渲染 */}
         {CPI ? (
@@ -75,10 +108,41 @@ const Economy = (props) => {
           <p>Loading...</p> // 数据加载时显示加载状态
         )}
       </div>
+
+
+
+
       <div class="text-red-500">This text should be red if Tailwind is working</div>
-      <Example></Example>
-      <Card1>card</Card1>
+
+      <div className="flex flex-col gap-4">
+        <Callout variant="default" title="Default Variant" width="200px">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+        </Callout>
+
+        <Callout variant="success" title="Success Variant">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+        </Callout>
+
+        <Callout variant="warning" title="Warning Variant">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+        </Callout>
+
+        <Callout variant="neutral" title="Neutral Variant">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+        </Callout>
+
+        <Callout variant="error" title="Error Variant">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+        </Callout>
     </div>
+
+
+    </MainWrapper>
   );
 };
 
