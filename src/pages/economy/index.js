@@ -11,7 +11,7 @@ import { MainWrapper, KeyIndicatorsWrapper, KeyIndicatorWrapper } from './style'
 
 
 const Economy = (props) => {
-  const [CPI, setCPI] = useState(null); // 初始值为 null
+  const [CPI, setCPI] = useState(3.8); // 初始值为 null
   const [CashRate, setCashRate] = useState(4.35);
   const [WagePriceIndex, setWagePriceIndex] = useState(4.1);
   // 使用 dataflow identifier 获取澳大利亚的通货膨胀率 (CPI) 数据
@@ -19,9 +19,9 @@ const Economy = (props) => {
 
   const data1 = 
   {
-    name: 'Daily active users',
-    stat: '3,450',
-    change: '+12.1%',
+    name: 'CPI',
+    stat: '151.1',
+    change: '+4.1%',
     changeType: 'positive',
   }
 
@@ -78,7 +78,7 @@ const Economy = (props) => {
   }, []); // 空数组确保 useEffect 只在组件挂载时运行一次
 
   return (
-    <MainWrapper>
+    <MainWrapper class="bg-white text-black dark:bg-gray-800 dark:text-white">
       <h2>CPI Data</h2>
       <KeyIndicatorsWrapper>
         
@@ -91,6 +91,7 @@ const Economy = (props) => {
         </KeyIndicatorWrapper>
 
         <KeyIndicatorWrapper>
+          <KPIcards></KPIcards>
         </KeyIndicatorWrapper>
 
       </KeyIndicatorsWrapper>
@@ -111,10 +112,7 @@ const Economy = (props) => {
 
 
 
-
-      <div class="text-red-500">This text should be red if Tailwind is working</div>
-
-      <div className="flex flex-col gap-4">
+      {/* <div className="flex flex-col gap-4">
         <Callout variant="default" title="Default Variant" width="200px">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
           eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
@@ -139,7 +137,7 @@ const Economy = (props) => {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
           eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
         </Callout>
-    </div>
+      </div> */}
 
 
     </MainWrapper>

@@ -12,42 +12,42 @@ export const data = [
   {
     date: 'Sep 22',
     CPI: 7.3,
-    Sponsored: 0,
+    CashRate: 2.35,
   },
   {
     date: 'Dec 22',
     CPI: 7.8,
-    Sponsored: 0,
+    CashRate: 3.1,
   },
   {
     date: 'Mar 23',
     CPI: 7.0,
-    Sponsored: 0,
+    CashRate: 3.6,
   },
   {
     date: 'Jun 23',
     CPI: 6.0,
-    Sponsored: 0,
+    CashRate: 4.1,
   },
   {
     date: 'Sep 23',
     CPI: 5.4,
-    Sponsored: 0,
+    CashRate: 4.1,
   },
   {
     date: 'Dec 23',
     CPI: 4.1,
-    Sponsored: 0,
+    CashRate: 4.35,
   },
   {
     date: 'Mar 24',
     CPI: 3.6,
-    Sponsored: 0,
+    CashRate: 4.35,
   },
   {
     date: 'Jun 24',
     CPI: 3.8,
-    Sponsored: 0,
+    CashRate: 4.35,
   },
 ];
 
@@ -57,7 +57,7 @@ const summary = [
     value: 3273,
   },
   {
-    name: 'Sponsored',
+    name: 'CashRate',
     value: 120,
   },
 ];
@@ -67,7 +67,7 @@ const valueFormatter = (number) =>
 
 const statusColor = {
   CPI: 'bg-blue-500',
-  Sponsored: 'bg-violet-500',
+  CashRate: 'bg-violet-500',
 };
 
 export const Example = () => {
@@ -88,12 +88,12 @@ export const Example = () => {
     <>
       <Card className="sm:mx-auto sm:max-w-lg">
         <h3 className="font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">
-          Follower metrics
+          CPI and Cash Rate
         </h3>
         <AreaChart
           data={data}
           index="date"
-          categories={['CPI', 'Sponsored']}
+          categories={['CPI', 'CashRate']}
           colors={['blue', 'violet']}
           showLegend={false}
           showYAxis={true}

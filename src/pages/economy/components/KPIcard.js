@@ -63,15 +63,14 @@ export const KPIcards = () => {
   );
 }
 
-export const KPIcard = (data, title, height, width, color, font, fontSize, ) => {
-    console.log("data: ", data)
+export const KPIcard = (data, title, height='300px', width='300px', color, font, fontSize, ) => {
+    data = data.data
     return (
-      <>
-        <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">  
-            <Card key={data.name}>
+      <> 
+            <Card key={data.name} style={ {height, width} }>
               <div className="flex items-center justify-between">
                 <dt className="text-tremor-default font-medium text-tremor-content dark:text-dark-tremor-content">
-                  {"yoyo"}
+                  {data.name}
                 </dt>
                 <span
                   className={classNames(
@@ -83,12 +82,12 @@ export const KPIcard = (data, title, height, width, color, font, fontSize, ) => 
                 >
                   {data.change}
                 </span>
+                <div className="text-tremor-default font-medium text-tremor-content dark:text-dark-tremor-content">Change from same period last year</div>
               </div>
               <dd className="text-tremor-metric font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
                 {data.stat}
               </dd>
             </Card>
-        </dl>
       </>
     );
   }
