@@ -86,7 +86,7 @@ export const Example = () => {
   }, [isOpen]);
   return (
     <>
-      <Card className="sm:mx-auto sm:max-w-lg">
+      <Card className="h-full w-full">
         <h3 className="font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">
           CPI and Cash Rate
         </h3>

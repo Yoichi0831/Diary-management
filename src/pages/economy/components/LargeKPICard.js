@@ -68,7 +68,7 @@ export const KPIcard = (data, title, color, font, fontSize,) => {
     const areaChartData = data.areaChartData
     return (
         <>
-            <Card key={data.name} className="w-[150px] h-[150px] p-[0px] pl-[0px]">
+            <Card key={data.name} className="w-[150px] h-[150px] pt-[0px] pl-[0px]">
                     <div className="items-center justify-between">
                         <div className="flex items-center justify-between ">
                             <dt className="text-tremor-default font-medium text-tremor-content dark:text-dark-tremor-content">
@@ -79,7 +79,11 @@ export const KPIcard = (data, title, color, font, fontSize,) => {
                                 {data.stat}
                             </dd>
                         </div>
-                        <span
+                    </div>
+
+
+
+                    <span
                         className={classNames(
                             data.changeType === 'positive'
                                 ? 'bg-emerald-100 text-emerald-800 ring-emerald-600/10 dark:bg-emerald-400/10 dark:text-emerald-500 dark:ring-emerald-400/20'
@@ -89,12 +93,6 @@ export const KPIcard = (data, title, color, font, fontSize,) => {
                     >
                         {data.change}
                     </span>
-
-                    </div>
-
-
-
-
                     <AreaChart
                         data={areaChartData}
                         index="date"
